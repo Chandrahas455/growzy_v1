@@ -9,10 +9,10 @@ export const LoginPage: React.FC = () => {
   const { signIn, signUp, user, isConfigured } = useAuth();
 
   const [mode, setMode] = useState<'login' | 'signup'>('login');
-  const [email, setEmail] = useState('alex@growzy.com');
-  const [password, setPassword] = useState('growzy2026');
-  const [name, setName] = useState('Alex Morgan');
-  const [title, setTitle] = useState('Managing Director & Founder');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [title, setTitle] = useState('');
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -59,32 +59,40 @@ export const LoginPage: React.FC = () => {
             <div className="w-14 h-14 bg-[#DFE104] text-black flex items-center justify-center font-display font-black text-3xl border-2 border-black">
               G
             </div>
-            <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-[#FAFAFA] uppercase font-display leading-none">
-              GROWZY OS
+            <h1 className="text-3xl font-black uppercase tracking-tighter font-display text-[#FAFAFA]">
+              GROWZY OPERATING SYSTEM
             </h1>
-            <p className="text-xs font-mono text-[#A1A1AA] uppercase tracking-widest">
-              AGENCY OPERATIONS & DELIVERY MATRIX
+            <p className="text-xs font-mono text-[#A1A1AA] uppercase tracking-wider">
+              {mode === 'login' ? '01. ENTER EXECUTIVE CREDENTIALS' : '02. ONBOARD NEW AGENCY PARTNER'}
             </p>
           </div>
 
-          {/* Mode Switch Tabs */}
-          <div className="flex border-b-2 border-[#3F3F46] font-mono text-xs font-bold uppercase">
+          {/* Mode Switcher Tabs */}
+          <div className="grid grid-cols-2 gap-2 font-mono text-xs font-bold uppercase p-1 bg-[#18181B] border-2 border-[#3F3F46]">
             <button
-              onClick={() => setMode('login')}
-              className={`flex-1 py-3 text-center border-b-2 transition-colors ${
+              type="button"
+              onClick={() => {
+                setMode('login');
+                setError(null);
+              }}
+              className={`py-2.5 transition-colors ${
                 mode === 'login'
-                  ? 'border-[#DFE104] text-[#DFE104] bg-[#18181B]'
-                  : 'border-transparent text-[#A1A1AA] hover:text-[#FAFAFA]'
+                  ? 'bg-[#DFE104] text-black font-extrabold border border-black'
+                  : 'text-[#A1A1AA] hover:text-[#FAFAFA]'
               }`}
             >
-              01. AUTHENTICATE
+              01. SIGN IN
             </button>
             <button
-              onClick={() => setMode('signup')}
-              className={`flex-1 py-3 text-center border-b-2 transition-colors ${
+              type="button"
+              onClick={() => {
+                setMode('signup');
+                setError(null);
+              }}
+              className={`py-2.5 transition-colors ${
                 mode === 'signup'
-                  ? 'border-[#DFE104] text-[#DFE104] bg-[#18181B]'
-                  : 'border-transparent text-[#A1A1AA] hover:text-[#FAFAFA]'
+                  ? 'bg-[#DFE104] text-black font-extrabold border border-black'
+                  : 'text-[#A1A1AA] hover:text-[#FAFAFA]'
               }`}
             >
               02. REGISTER PARTNER
@@ -117,7 +125,7 @@ export const LoginPage: React.FC = () => {
                       required
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="ALEX MORGAN"
+                      placeholder="ENTER YOUR FULL NAME"
                       className="w-full bg-[#18181B] border-b-2 border-[#3F3F46] focus:border-[#DFE104] pl-10 pr-4 py-3 text-sm font-mono text-[#FAFAFA] uppercase placeholder-zinc-600 focus:outline-none"
                     />
                   </div>
@@ -132,7 +140,7 @@ export const LoginPage: React.FC = () => {
                     required
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    placeholder="MANAGING DIRECTOR & FOUNDER"
+                    placeholder="ENTER YOUR ROLE (E.G. FOUNDER)"
                     className="w-full bg-[#18181B] border-b-2 border-[#3F3F46] focus:border-[#DFE104] px-4 py-3 text-sm font-mono text-[#FAFAFA] uppercase placeholder-zinc-600 focus:outline-none"
                   />
                 </div>
@@ -150,7 +158,7 @@ export const LoginPage: React.FC = () => {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ALEX@GROWZY.COM"
+                  placeholder="NAME@AGENCY.COM"
                   className="w-full bg-[#18181B] border-b-2 border-[#3F3F46] focus:border-[#DFE104] pl-10 pr-4 py-3 text-sm font-mono text-[#FAFAFA] uppercase placeholder-zinc-600 focus:outline-none"
                 />
               </div>
@@ -167,7 +175,7 @@ export const LoginPage: React.FC = () => {
                   required
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="••••••••••••"
+                  placeholder="ENTER PASSWORD"
                   className="w-full bg-[#18181B] border-b-2 border-[#3F3F46] focus:border-[#DFE104] pl-10 pr-4 py-3 text-sm font-mono text-[#FAFAFA] focus:outline-none"
                 />
               </div>
@@ -179,7 +187,7 @@ export const LoginPage: React.FC = () => {
               className="w-full py-4 bg-[#DFE104] hover:bg-[#c7c902] active:scale-[0.99] text-black font-extrabold text-sm uppercase tracking-wider transition-all border-2 border-black flex items-center justify-center space-x-2 font-mono"
             >
               {loading ? (
-                <span>AUTHENTICATING WITH SUPABASE...</span>
+                <span>AUTHENTICATING AGENT...</span>
               ) : mode === 'login' ? (
                 <>
                   <LogIn className="w-4 h-4" />
@@ -193,13 +201,21 @@ export const LoginPage: React.FC = () => {
               )}
             </button>
           </form>
+
+          {/* Footing note */}
+          <div className="pt-4 border-t-2 border-[#3F3F46] flex items-center justify-between text-[11px] font-mono text-[#A1A1AA]">
+            <span className="flex items-center space-x-1.5">
+              <ShieldCheck className="w-4 h-4 text-[#DFE104]" />
+              <span>SUPABASE ROW LEVEL SECURITY ACTIVE</span>
+            </span>
+            <span>V1.0.0</span>
+          </div>
         </div>
       </div>
 
-      {/* Footer System Status */}
-      <footer className="p-4 border-t-2 border-[#3F3F46] bg-[#18181B] text-center font-mono text-[11px] text-[#A1A1AA] uppercase tracking-widest">
-        GROWZY OS V1.0 /// REAL DATABASE OPERATIONS ENABLED /// DESIGN SYSTEM: KINETIC TYPOGRAPHY
-      </footer>
+      <div className="p-4 border-t-2 border-[#3F3F46] text-center font-mono text-xs text-[#A1A1AA] uppercase">
+        GROWZY OS /// HIGH PERFORMANCE AGENCY OPERATING SYSTEM
+      </div>
     </div>
   );
 };
