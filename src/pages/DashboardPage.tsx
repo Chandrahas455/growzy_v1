@@ -127,7 +127,7 @@ export const DashboardPage: React.FC = () => {
         <div className="flex items-center justify-between">
           <div>
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-[#DFE104] bg-[#18181B] px-3 py-1 border border-[#3F3F46]">
-              FOUNDER COMMAND MATRIX /// LIVE SUPABASE DB
+              FOUNDER COMMAND MATRIX /// REAL-TIME STREAM
             </span>
             <h1 className="text-[clamp(2.5rem,6vw,5rem)] font-black uppercase tracking-tighter leading-none font-display text-[#FAFAFA] mt-3">
               EXECUTIVE DASHBOARD
@@ -356,7 +356,7 @@ export const DashboardPage: React.FC = () => {
             <span>REAL-TIME AUDIT STREAM</span>
           </h2>
           <span className="text-xs font-mono text-[#A1A1AA] uppercase">
-            SUPABASE AUDIT LOGS ({activityLogs.length})
+            SYSTEM AUDIT LOGS ({activityLogs.length})
           </span>
         </div>
 

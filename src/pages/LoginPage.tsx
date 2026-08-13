@@ -45,7 +45,7 @@ export const LoginPage: React.FC = () => {
       {/* High Energy Ticker Marquee */}
       <div className="bg-[#DFE104] text-black py-2.5 font-mono text-xs font-black tracking-widest border-b-2 border-black">
         <Marquee speed={70} gradient={false}>
-          <span className="mx-8 uppercase">⚡ GROWZY OS V1.0 /// REAL SUPABASE DATABASE ACTIVE</span>
+          <span className="mx-8 uppercase">⚡ GROWZY OS V1.0 /// HIGH PERFORMANCE AGENCY SYSTEM</span>
           <span className="mx-8 uppercase">★ HAWKVEC MILESTONE ENGINE /// REAL-TIME DELIVERABLES</span>
           <span className="mx-8 uppercase">⚡ FOUNDER'S OPERATIONAL MATRIX /// KINETIC TYPOGRAPHY SYSTEM</span>
           <span className="mx-8 uppercase">★ PRODUCTION AGENCY DIRECTORY /// INVOICE LEDGER</span>
@@ -206,7 +206,7 @@ export const LoginPage: React.FC = () => {
           <div className="pt-4 border-t-2 border-[#3F3F46] flex items-center justify-between text-[11px] font-mono text-[#A1A1AA]">
             <span className="flex items-center space-x-1.5">
               <ShieldCheck className="w-4 h-4 text-[#DFE104]" />
-              <span>SUPABASE ROW LEVEL SECURITY ACTIVE</span>
+              <span>ENTERPRISE END-TO-END SECURITY ACTIVE</span>
             </span>
             <span>V1.0.0</span>
           </div>

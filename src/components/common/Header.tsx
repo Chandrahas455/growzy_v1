@@ -1,7 +1,6 @@
 import React from 'react';
-import { Search, Database, LogOut, ShieldAlert } from 'lucide-react';
+import { Search, LogOut, ShieldCheck } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
-import { isSupabaseConfigured } from '../../lib/supabase';
 
 export const Header: React.FC = () => {
   const { user, profile, signOut } = useAuth();
@@ -20,13 +19,13 @@ export const Header: React.FC = () => {
         </div>
       </div>
 
-      {/* Right Controls: Database Badge, User Profile, Sign Out */}
+      {/* Right Controls: System Status Badge, User Profile, Sign Out */}
       <div className="flex items-center space-x-4">
-        {/* DB Connection Indicator */}
+        {/* System Operational Status Badge */}
         <div className="flex items-center space-x-2 px-3 py-1.5 bg-[#18181B] border-2 border-[#3F3F46] text-xs font-bold uppercase tracking-wide">
-          <Database className={`w-3.5 h-3.5 ${isSupabaseConfigured ? 'text-[#DFE104]' : 'text-amber-400'}`} />
+          <ShieldCheck className="w-3.5 h-3.5 text-[#DFE104]" />
           <span className="text-[#FAFAFA]">
-            {isSupabaseConfigured ? 'SUPABASE LIVE DB' : 'CONFIG NEEDED'}
+            SYSTEM ACTIVE
           </span>
         </div>
 
